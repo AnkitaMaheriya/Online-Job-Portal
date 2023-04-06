@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Admin Dashboard</title>
+
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+   	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		.nav-link
+		{
+			margin-right: 20px;
+			font-weight: bold;
+		}
+
+		.nav-link:hover
+		{
+			color: white;
+			font-weight: bold;
+			background-color: darkblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<img src="{% static 'img/icon1.png' %}" width="160px" height="85px" style="margin-top: 15px; margin-bottom: 22px; margin-left: 0px;">
+			</div>
+
+			<div class="col-sm-6 mt-5 mb-4 text-center">
+				<span style="font-size: 30px;">
+					<span style="color: red; font-family: algerian;">ONLINE JOB PORTAL</span>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<nav class="navbar navbar-expand-sm" style="background-color: khaki;" width="100%";>
+		<!--<a class="navbar-brand pl-5 font-weight-bold" style="color: black; font-family: Monotype Corsiva; font-size:30px">Job Portal</a>-->
+
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link font-weight-bold" href="{% url 'admin_home' %}" style="margin-left:280px;">
+					<i class="fa fa-home mr-1">   Home</i>
+				</a>
+			</l i>
+
+			<li class="nav-item">
+				<a class="nav-link font-weight-bold" href="{% url 'index' %}">
+					<i class="fa fa-users mr-1">   New Recruiter Request</i>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link font-weight-bold" href="{% url 'view_recruiter' %}">
+					<i class="fa fa-user-circle mr-1">  View Recruiters</i>
+				</a>
+			</li>
+
+                              <li class="nav-item">
+				<a class="nav-link font-weight-bold" href="{% url 'view_jobseeker' %}">
+					<i class="fa fa-user-o mr-1">  View Jobseekers</i>
+				</a>
+			</li>
+
+                              <li class="nav-item">
+				<a class="nav-link font-weight-bold" href="#">
+					<i class="fa fa-key mr-1">  Change Password</i>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link font-weight-bold" href="{% url 'index' %}">
+					<i class="fa fa-sign-out mr-1">  Logout</i>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>

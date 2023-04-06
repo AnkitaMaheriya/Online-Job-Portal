@@ -1,0 +1,37 @@
+{% load static %}
+
+{% block body %}
+	{% include 'navigation.html' %}
+
+	<marquee width="100%" style="font-family:  Monotype Corsiva; font-size:25px; color:floralwhite; background-color: darkcyan; font-weight: bold; font-weight: italic; margin-top: 1%;">
+		ADMIN Login
+	</marquee>
+	
+	<hr>
+
+	<form class="container mt-5" method="post">
+		{% csrf_token %} <!-- Cross Site Request Folder -->
+		<label><b>UserName</b></label>
+		<input type="text" class="form-control" name="uname" placeholder="Enter UserName">
+
+		<br>
+
+		<label><b>Password</b></label>
+		<input type="password" class="form-control" name="pwd" placeholder="Enter Pasword">
+
+		<input type="submit" value="Login" class="btn btn-primary" style="margin-top:4%; color:white; background-color:darkcyan; height: 40px;">
+
+	</form>
+
+	{% if error == "no"  %} 
+		<script>
+			alert("Logged In Successfully...!!")
+			window.location = ('{% url 'admin_home' %}')
+		</script>
+			
+	{% elif error == "yes" %}
+		<script>
+			alert("Invalid Login Credentials, Try Again...!!")
+		</script>
+	{% endif %}
+{% endblock %}

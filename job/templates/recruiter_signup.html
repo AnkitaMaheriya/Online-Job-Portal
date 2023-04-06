@@ -1,0 +1,121 @@
+{% load static %}
+
+{% block body %}
+	{% include 'navigation.html' %}
+
+	<script>
+		function checkpass() 
+		{
+			if (document.signup.pwd.value != document.signup.cpwd.value) 
+			{
+				alert('Password and Confirm Password does not match');
+				document.signup.cpwd.focus();
+				return false;
+			}
+
+			return true;
+		}
+	</script>
+
+	<marquee width="100%" style="font-family: Monotype Corsiva; font-size:25px; color:floralwhite; background-color: darkcyan; font-weight: bold; margin-top: 1%;">
+		RECRUITER Sign Up
+	</marquee>
+	
+	<hr>
+
+	<form class="container mt-5" name="signup" onsubmit="return checkpass()" method="post" enctype="multipart/form-data">
+		{% csrf_token %} <!-- Cross Site Request Folder -->
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label><b>First Name</b></label>
+				<input type="text" class="form-control" name="fname" placeholder="Enter First Name" required>
+			</div>
+
+			<div class="form-group col-md-6">
+				<label><b>Last Name</b></label>
+				<input type="text" class="form-control" name="lname" placeholder="Enter Last Name" required>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label><b>Contact No.</b></label>
+				<input type="tel" class="form-control" name="contact" placeholder="Enter Contact No." maxlength="10" pattern="[1-9]{1}[0-9]{9}" required>
+			</div>
+
+                              <div class="form-group col-md-6">
+				<label><b>Company Name</b></label>
+				<input type="text" class="form-control" name="company" placeholder="Enter Company Name" maxlength="50" required>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-12">
+				<label><b>Email ID</b></label>
+				<input type="email" class="form-control" name="email" placeholder="Enter Email ID" required>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label><b>Password</b></label>
+				<input type="password" class="form-control" name="pwd" placeholder="Enter Password" required>
+			</div>
+
+			<div class="form-group col-md-6">
+				<label><b>Confirm Password</b></label>
+				<input type="password" class="form-control" name="cpwd" placeholder="Enter Password Again" required>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label><b>Gender</b></label>
+
+				<div style="border: 1px solid lightgrey; padding: 5px; border-radius: 6px;">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="customRadioInLine1" class="custom-control-input" name="gender" value="Male">
+						<label class="custom-control-label" for="customRadioInLine1">Male</label>
+					</div>
+					
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="customRadioInLine2" class="custom-control-input" name="gender" value="Female">
+						<label class="custom-control-label" for="customRadioInLine2">Female</label>
+					</div>
+
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="customRadioInLine3" class="custom-control-input" name="gender" value="Other">
+						<label class="custom-control-label" for="customRadioInLine3">Other</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<label style="margin-right: 5%;"><b>Image</b></label>
+
+				<input type="file" class="form-control" name="img" required>
+			</div>
+		</div>
+
+		<input type="submit" value="Sign Up" class="btn btn-primary my-3" style="margin-top:4%; margin-bottom:4%; color:white; background-color:darkcyan; height: 40px;">
+		
+		<br>
+
+		Already Registered ? 
+		<a href="{% url 'recruiter_login' %}" style="margin-bottom: 7px;">Go to Login Page</a>
+	</form>
+
+	{% comment %} {% if flag == "no"  %} 
+		<script>
+			alert("Signed Up Successfully...!!")
+			window.location = ('{% url 'recruiter_home' %}')
+		</script>
+	{% endif %}
+
+	{% if flag == "yes" %}
+		<script>
+			alert("Something went Wrong, Try Again...!!")
+		</script>
+	{% endif %} {% endcomment %}
+{% endblock %}

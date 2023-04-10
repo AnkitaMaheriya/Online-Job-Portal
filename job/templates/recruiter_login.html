@@ -28,20 +28,15 @@
 		<a href="{% url 'recruiter_signup' %} " style="margin-bottom: 7px;">Create an Acount</a>
 	</form>
 
-	{% comment %} {% if flag == "no"  %} 
+	{% if error == "no"  %} 
 		<script>
 			alert("Logged In Successfully...!!")
-			window.location = ('{% url 'jobseeker_home' %}')
+			window.location = ('{% url 'recruiter_home' %}')
 		</script>
 			
-	{% elif flag == "yes" %}
+	{% elif error == "yes" %}
 		<script>
 			alert("Invalid Login Credentials, Try Again...!!")
 		</script>
-	
-	{% elif flag == "not" %}
-		<script>
-			alert("Your Login Status is Pending...!!")
-		</script>
-	{% endif %} {% endcomment %}
+	{% endif %}
 {% endblock %}

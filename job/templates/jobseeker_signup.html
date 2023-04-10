@@ -101,16 +101,16 @@
 		<a href="{% url 'jobseeker_login' %}" style="margin-bottom: 7px;">Go to Login Page</a>
 	</form>
 
-	{% comment %} {% if flag == "no"  %} 
+	{% if error == "no"  %} 
 		<script>
 			alert("Signed  Up Successfully...!!")
 			window.location = ('{% url 'jobseeker_login' %}')
 		</script>
 	{% endif %}
 		
-	{% if flag == "yes" %}
+	{% if error == "yes" %}
 		<script>
 			alert("Something went Wrong, Try Again...!!")
 		</script>
-	{% endif %} {% endcomment %}
+	{% endif %}
 {% endblock %}

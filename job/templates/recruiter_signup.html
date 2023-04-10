@@ -8,7 +8,8 @@
 		{
 			if (document.signup.pwd.value != document.signup.cpwd.value) 
 			{
-				alert('Password and Confirm Password does not match');
+			
+			.	alert('Password and Confirm Password does not match');
 				document.signup.cpwd.focus();
 				return false;
 			}
@@ -106,16 +107,16 @@
 		<a href="{% url 'recruiter_login' %}" style="margin-bottom: 7px;">Go to Login Page</a>
 	</form>
 
-	{% comment %} {% if flag == "no"  %} 
+	{% if error == "no"  %} 
 		<script>
 			alert("Signed Up Successfully...!!")
 			window.location = ('{% url 'recruiter_home' %}')
 		</script>
 	{% endif %}
 
-	{% if flag == "yes" %}
+	{% if error == "yes" %}
 		<script>
 			alert("Something went Wrong, Try Again...!!")
 		</script>
-	{% endif %} {% endcomment %}
+	{% endif %}
 {% endblock %}

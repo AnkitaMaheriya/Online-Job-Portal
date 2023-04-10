@@ -1,10 +1,10 @@
 {% load static %}
 
 {% block body %}
-	{% include 'admin_navigation.html' %}
+	{% include 'recruiter_navigation.html' %}
 
 	<marquee width="100%" style="font-family: Monotype Corsiva; font-size:25px; color:floralwhite; background-color: darkcyan; font-weight: bold; margin-top: 1%;">
-		View All Jobseeker Users
+		View All Jobs
 	</marquee>
 
     <div class="container">  
@@ -12,25 +12,24 @@
 	    	<thead style="background-color : #123456 ; color : white;">
 	    		<tr>
 	    			<th>S.No.</th>
-	    			<th>Full Name</th>
-	    			<th>Email ID</th>
-	    			<th>Contact</th>
-	    			<th>Gender</th>
-	    			<th>Image</th>
+	    			<th>Job Title</th>
+	    			<th>Creation Date</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
 	    			<th>Action</th> 
 	    		</tr>
 	    	</thead>
 
 	    	<tbody style="background-color : lightcoral;">
-	    		{% for i in data %}
+	    		{% for i in job %}
 	    		<tr>
 	    			 <td>{{forloop.counter}}</td>
-	    			 <td>{{i.user.first_name}} {{i.user.last_name}}</td>
-	    			 <td>{{i.user.username}}</td>
-	    			 <td>{{i.mobile}}</td>
-	    			 <td>{{i.gender}}</td>
+	    			 <td>{{i.title}}</td>
+	    			 <td>{{i.user.creation_date}}</td>
+                                         <td>{{i.user.start_date}}</td>
+                                         <td>{{i.user.end_date}}</td>
 	    			 <td><img src="{{i.image.url}}" style="width:100px; height:100px;"></td>
-	    			 <td><a href="{% url 'delete_jobseeker' i.user.id %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to Delete ?')">DELETE</a></td>
+	    			 <td><a href="{% url 'delete_recruiter' i.user.id %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to Delete ?')">DELETE</a></td>
 	    		</tr>
 	    		{% endfor %}
 	    	</tbody>
